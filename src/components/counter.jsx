@@ -20,25 +20,37 @@ class Counter extends Component{
 
     render(){
         // console.log('props', this.props);
-        return (<React.Fragment>
-            <span className={"badge badge-warning"}>{this.props.counter.value}</span>
-            <span>{this.formatCount()}</span>
-                <button
-                    onClick={() => this.props.onIncrement(this.props.counter)}
-                    className={"btn btn-success"}
+        return (
+            <div className="row">
+                <div className="col-1">
+                    <span className={"badge badge-warning"}>{this.props.counter.value}</span>
+                    <span>{this.formatCount()}</span>
+                </div>
+                <div className="col">
+                    <button
+                        onClick={() => this.props.onIncrement(this.props.counter)}
+                        className={"btn btn-success m-2"}
 
-                >
-                    Increment
-                </button>
-            <button
-                onClick={() => this.props.onDelete(this.props.counter.id)}
-                className={"btn btn-primary"}
+                    >
+                        +
+                    </button>
+                    <button
+                        onClick={() => this.props.onDecrement(this.props.counter)}
+                        className={"btn btn-warning m-2"}
+                        disabled={this.props.counter.value === 0}
+                    >
+                        -
+                    </button>
+                    <button
+                        onClick={() => this.props.onDelete(this.props.counter.id)}
+                        className={"btn btn-primary m-2"}
 
-            >
-                Delete
-            </button>
-            <br/>
-        </React.Fragment>)
+                    >
+                        Delete
+                    </button>
+                </div>
+            </div>
+        )
     };
 
     formatCount(){
